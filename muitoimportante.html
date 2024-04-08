@@ -15,6 +15,7 @@
             text-align: center;
             padding-top: 100px;
             font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
         }
 
         .painel h1{
@@ -31,7 +32,7 @@
         }
 
         #nao{
-            position: relative; /* Alteração do posicionamento para relative */
+            position: absolute; 
             height: 40px;
             width: 60px;
             background-color: white;
@@ -43,34 +44,34 @@
 </head>
 
 <body>
+    
     <div class="painel">
         <h1>Cineminha hoje?</h1>
+
         <a href="https://www.youtube.com/watch?v=xgPYY1GiKyY"><button id="sim"> Sim! </button></a>
-        <button onmouseover="fuja()" id="nao"> Não </button>
+        <button id="nao" onmouseover="fuja()"> Não </button>
     </div>
 
     <script>
+
         function fuja(){
-            var botaoNao = document.getElementById("nao");
+           var botaoNao = document.getElementById("nao")
 
-            var larguraJanela = window.innerWidth;
-            var alturaJanela = window.innerHeight;
+           var larguraJanela = window.innerWidth;
+           var alturaJanela = window.innerHeight;
 
-            var larguraBotao = botaoNao.offsetWidth;
-            var alturaBotao = botaoNao.offsetHeight;
+           var maxX = larguraJanela - botaoNao.offsetWidth;
+           var maxY = alturaJanela - botaoNao.offsetHeight;
 
-            var larguraMaxima = larguraJanela - larguraBotao;
-            var alturaMaxima = alturaJanela - alturaBotao;
+           var aleatorioX = Math.floor(Math.random() * maxX);
+           var aleatorioY = Math.floor(Math.random() * maxY);
 
-            // Definindo altura máxima menor
-            var alturaMaximaMenor = 400;
-
-            var aleatorioX = Math.floor(Math.random() * larguraMaxima);
-            var aleatorioY = Math.floor(Math.random() * (alturaMaxima - alturaMaximaMenor));
-
-            botaoNao.style.left = aleatorioX + "px";
-            botaoNao.style.top = aleatorioY + "px";
+           botaoNao.style.left = aleatorioX + "px";
+           botaoNao.style.top = aleatorioY + "px";
         }
+
+
+        
     </script>
 </body>
 </html>
